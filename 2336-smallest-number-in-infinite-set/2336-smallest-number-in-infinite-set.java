@@ -1,23 +1,21 @@
 class SmallestInfiniteSet {
     
-    PriorityQueue<Integer> pq = new PriorityQueue<>();
+    PriorityQueue<Integer> pq;
+    int curr;
 
     public SmallestInfiniteSet() {
-        for (int i = 1; i <= 1000; i++) {
-            pq.add(i);
-        }
+        pq = new PriorityQueue<>();
+        curr = 1;
     }
     
     public int popSmallest() {
-        return pq.poll();
+        return pq.isEmpty() ? curr++ : pq.poll();
     }
-    
-    public void addBack(int num) {
-        if (pq.contains(num)) {
-            return;
-        }
 
-        pq.add(num);
+    public void addBack(int num) {
+        if (num < curr && !pq.contains(num)) {
+            pq.add(num);
+        }
     }
 }
 
