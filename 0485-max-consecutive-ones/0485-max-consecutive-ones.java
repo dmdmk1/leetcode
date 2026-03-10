@@ -5,15 +5,14 @@ class Solution {
         int max = 0;
 
         while (e < nums.length) {
-            if (nums[e] == 1) {
-                e++;
-            } else {
-                max = Math.max(max, e - s);
+            if (nums[e] == 0) {
                 s = e + 1;
-                e = s;
             }
+
+            max = Math.max(max, e - s + 1);
+            e++;
         }
 
-        return Math.max(max, e - s);
+        return max;
     }
 }
