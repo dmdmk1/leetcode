@@ -3,20 +3,21 @@ class Solution {
         Stack<Integer> stack = new Stack<>();
         List<String> answer = new ArrayList<>();
 
-        for (int i = 1; i <= n; i++) {
+        int i = 1;
+        int targetIndex = 0;
 
-            if (stack.size() != target.length) {
-                stack.push(i);
-                answer.add("Push");
+        while(i <= n && targetIndex < target.length) {
+            stack.push(i);
+            answer.add("Push");
+
+            if(stack.peek() == target[targetIndex]) {
+                targetIndex++;
+            } else {
+                stack.pop();
+                answer.add("Pop");
             }
 
-            for (int j = 0; j < stack.size(); j++) {
-                if(stack.get(j) != target[j]) {
-                    stack.pop();
-                    answer.add("Pop");
-                    break;
-                }
-            }
+            i++;
         }
 
         return answer;
