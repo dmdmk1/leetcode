@@ -2,9 +2,8 @@ class Solution {
     public int evalRPN(String[] tokens) {
         Stack<Integer> stack = new Stack<>();
 
-        int left = 0;
-        int right = 0;
-        
+        int left, right;
+
         for (String token : tokens) {
             switch (token) {
                 case "+":
